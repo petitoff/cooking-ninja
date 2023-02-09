@@ -1,9 +1,7 @@
+import RecipeSummary from "../../components/Recipe/RecipeSummary";
+
 const Recipe = () => {
-  return (
-    <div>
-      <h1>Recipe</h1>
-    </div>
-  );
+  return <RecipeSummary />;
 };
 
 export default Recipe;
