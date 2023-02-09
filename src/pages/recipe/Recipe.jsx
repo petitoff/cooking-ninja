@@ -1,4 +1,5 @@
-import RecipeSummary from "../../components/Recipe/RecipeSummary";
+import RecipeSummary from "../../components/RecipeSummary/RecipeSummary";
+import "./Recipe.css";
 
 const Recipe = () => {
   return <RecipeSummary />;
