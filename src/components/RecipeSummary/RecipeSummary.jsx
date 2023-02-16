@@ -12,14 +12,19 @@ const RecipeSummary = () => {
   const { mode } = useTheme();
   const { id } = useParams();
 
+  const handleUpdate = () => {
+    projectFirestore.collection("recipes").doc(id).update({
+      title: "Updated title",
+    });
+  };
+
   useEffect(() => {
     setIsPending(true);
 
-    projectFirestore
+    const unsub = projectFirestore
       .collection("recipes")
       .doc(id)
-      .get()
-      .then((doc) => {
+      .onSnapshot((doc) => {
         if (doc.exists) {
           setData(doc.data());
         } else {
@@ -28,6 +33,8 @@ const RecipeSummary = () => {
       });
 
     setIsPending(false);
+
+    return () => unsub();
   }, [id]);
 
   return (
@@ -44,6 +51,7 @@ const RecipeSummary = () => {
             ))}
           </ul>
           <p className="method">{data.method}</p>
+          <button onClick={handleUpdate}>Update</button>
         </>
       )}
     </div>
