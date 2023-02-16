@@ -21,7 +21,6 @@ const SearchBar = () => {
       return recipe.title.toLowerCase().includes(term.toLowerCase());
     });
 
-    console.log(results[0].id);
     setTerm(results[0].id);
   };
 
